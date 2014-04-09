@@ -1,0 +1,182 @@
+--------------------------------------------------------------------------------
+  INFORMATION
+--------------------------------------------------------------------------------
+Termite is a visualization tool for inspecting the output of statistical
+topic models based on the techniques described in the following publication:
+
+Termite: Visualization Techniques for Assessing Textual Topic Models
+Jason Chuang, Christopher D. Manning, Jeffrey Heer
+Computer Science Dept, Stanford University
+http://vis.stanford.edu/papers/termite
+
+This tool is developed by:
+    * Jason Chuang <jcchuang@cs.stanford.edu>
+    * Ashley Jin <ashpjin@cs.stanford.edu>
+
+This software is distributed under the BSD-3 license.
+
+--------------------------------------------------------------------------------
+  LICENSE
+--------------------------------------------------------------------------------
+Copyright (c) 2013, Leland Stanford Junior University
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of the <organization> nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+--------------------------------------------------------------------------------
+  ADDITIONAL CREDITS
+--------------------------------------------------------------------------------
+
+Termite requires the use of the following libraries and tools.
+We thank their respective authors for developing and distributing these tools.
+
+Mallet: Machine learning for language toolkit
+    Project website: http://mallet.cs.umass.edu
+    Developed by Andrew McCallum, et al.
+    Distributed under a CPL license: externals/mallet-2.0.7/LICENSE
+
+STMT: Stanford topic modeling toolbox
+    Project website: http://nlp.stanford.edu/software/tmt
+    Developed by Daniel Ramage, et al.
+    Distributed under a GNU license: externals/stmt-0.4.0/LICENSE
+
+D3 javascript visualization library
+    Project website: http://d3js.org
+    Developed by Mike Bostock, et al.
+    Distributed under a BSD license: externals/d3-v3/LICENSE
+
+Backbone
+    Project website: http://backbonejs.org
+    Developed by Jeremy Ashkenas, DocumentCloud Inc.
+    Distributed under an MIT license: externals/backbone-latest/LICENSE
+
+Underscore
+    Project website: http://underscorejs.org
+    Developed by Jeremy Ashkenas, DocumentCloud Inc.
+    Distributed under an MIT license: externals/underscore-latest/LICENSE
+
+jQuery
+    Project website: http://jquery.com
+    Developed by the jQuery Foundation
+    Distributed under an MIT license: externals/jquery-1.9.1/LICENSE
+
+Font Awesome
+    Project website: http://fontawesome.io
+    Developed by Dave Gandy
+    Font distributed under an SIL OFL 1.1 license: http://scripts.sil.org/OFL
+    CSS and LESS files distributed under an MIT license: http://opensource.org/licenses/mit-license.html
+    
+Google closure javascript compiler
+    Project website: https://developers.google.com/closure/compiler/
+    Developed by Google engineers
+    Distributed under an Apache license: externals/closure-latest/LICENSE
+
+YUI Compressor
+    Project website: http://yui.github.io/yuicompressor/
+    Developed by Yahoo! Inc.
+    Distributed under a BSD license: externals/yui-2.4.7/LICENSE
+
+JSDoc3
+    Project website: http://usejsdoc.org/
+    Developed by the JSDoc 3 documentation project
+    Distributed under an Apache license: http://usejsdoc.org/about-license-jsdoc3.html
+
+Mocha
+    Project website: http://visionmedia.github.io/mocha/
+    Developed by T. J. Holowaychuk
+    Distributed under an MIT license: https://github.com/visionmedia/mocha/blob/master/LICENSE
+
+Chai
+    Project website: http://chaijs.com/
+    Developed by Jake Luer
+    Distributed under an MIT license: https://github.com/chaijs/chai/blob/master/README.md
+
+Require
+    Project website: http://requirejs.org/
+    Developed by the Dojo Foundation
+    Distributed under a BSD or MIT license: https://github.com/jrburke/requirejs/blob/master/LICENSE
+
+------------------
+  ONE-TIME SETUP
+------------------
+Run the setup script to fetch the following tools, libraries, and prepare all javascript
+files needed by Termite. This script only needs to be run once when Termite is first
+downloaded onto a new machine.
+    >> ./setup.sh
+
+Libraries fetched include:
+    * MALLET
+    * STMT
+    * Closure compiler
+    * YUI compressor
+    * d3.js
+    * jquery.js
+    * underscore.js
+    * backbone.js
+
+The script creates a minified version of all javascript files.
+
+-----------------------
+  BUILD A TOPIC MODEL
+-----------------------
+Building a topic model in Termite requires running a single python script. The script reads
+in an input text corpus, and produces an output folder whose content can be inspected 
+using a web browser, described in the next section.
+
+To process a text corpus, and build a topic model by running one of the following scripts.
+Execution time will vary depending on the size of the corpus.
+    >> src/import_file.sh
+    >> src/import_folder.sh
+
+---------------------------- 
+  VIEW TOPIC MODEL OUTPUTS
+----------------------------
+You are now ready to visualize the topic model outputs! Termite's output can be viewed in
+a web browser. To view the files locally (on your own computer), you need to set up a local
+web server.
+
+Start a local server by running
+    >> ./web.sh
+
+Open http://localhost:8888/client_src in a modern web browser (Chrome, Safari, Firefox, or Opera)
+to view a visualization of the model outputs.
+
+-----------------------------
+  TOPIC MODEL VISUALIZATION
+-----------------------------
+The visualization should consist of a matrix view with a frequency bar view to the right.
+The top right contains user controls, two slider bars and one input text box. User
+controls are explained in more detail in the 'VISUALIZATION USE CASES' section.
+
+When the mouse is placed over terms, topics, circles, or bars in the matrix or frequency 
+bar view, the associated term, topic, bar, and circles will be highlighted in both views.
+
+-------------------
+  EXAMPLE DATASET
+-------------------
+To download the "20 newsgroup" example dataset, execute the following command
+    >> ./setup.sh data
+
+And then execute the following script
+    >> src/import_folder.sh corpus/20newsgroups 20newsgroups
+
